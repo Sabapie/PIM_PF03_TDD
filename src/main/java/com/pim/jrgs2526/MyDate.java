@@ -7,6 +7,51 @@ public class MyDate {
     public static final String ERR_INVALID_DAY = "Day value not valid";
     public static final String ERR_INVALID_DATE = "Invalid date";
 
+    private int day;
+    private Months month;
+    private int year;
+
+    public MyDate(int day, Months month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    public MyDate(){
+
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public Months getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(Months month) {
+        this.month = month;
+    }
+
+    public void setYear(int year) {
+        if (year < 0) {
+            throw new IllegalArgumentException(ERR_INVALID_YEAR);
+        } else if {
+
+        }
+        else {
+            this.year = year;
+        }
+    }
+
     public enum Months {
         JANUARY(1),
         FEBRUARY(2),
@@ -33,5 +78,8 @@ public class MyDate {
                     return m;
             return null;
         }
+
+
+
     }
 }
