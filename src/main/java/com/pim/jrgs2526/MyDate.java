@@ -1,5 +1,7 @@
 package com.pim.jrgs2526;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 public class MyDate {
 
     public static final String ERR_INVALID_YEAR = "Year value not valid";
@@ -10,15 +12,28 @@ public class MyDate {
     private int day;
     private Months month;
     private int year;
+    boolean leapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+
 
     public MyDate(int day, Months month, int year) {
         this.day = day;
         this.month = month;
-        this.year = year;
+        if (isLeapYear(month, day)) this.year = year; else throw new IllegalArgumentException(ERR_INVALID_YEAR);
     }
 
     public MyDate(){
 
+    }
+
+    public boolean isLeapYear(Months month, int day) {
+        if(month == Months.FEBRUARY && day == 29){
+            if (leapYear) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     public int getDay() {
@@ -42,10 +57,10 @@ public class MyDate {
     }
 
     public void setYear(int year) {
-        if (year < 0) {
+        if () {
             throw new IllegalArgumentException(ERR_INVALID_YEAR);
-        } else if {
-
+        } else if (year < actualDate.getYear()){
+            throw new IllegalArgumentException(ERR_INVALID_YEAR);
         }
         else {
             this.year = year;
